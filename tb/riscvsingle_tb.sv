@@ -119,7 +119,7 @@ module riscvsingle_tb();
         // Test 6: jal x1, offset (J-Type)
         // opcode = 1101111
         $display("Current PC: %d", PC);
-        Instr <= 32'b00000001100000000000_00001_1101111;  // jal x1, 64
+        Instr <= 32'b00000000110000000000_00001_1101111;  // jal x1, 64
         @(posedge clk);
         #1;
         $display("Test 6 : jal x1, , offset: %d (J-Type)", 32'd12);
