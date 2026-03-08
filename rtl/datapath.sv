@@ -53,7 +53,7 @@ module datapath
     
     // Immediate Generator , Sign Extender
     signextend se(
-        .Instr(Instr),           
+        .Instr(Instr[31:7]),           
         .ImmSrc(ImmSrc),
         .ImmExt(ImmExt)
     );

@@ -143,6 +143,23 @@ module controller_tb();
         $display("  ALUControl:  %b (expected: %b) - rd1 - rd2 sub\n", ALUControl, 3'b001);
         #10;
 
+        // sw instruction test 
+        // S-Type : [31 imm 25]_[24 rs2 20]_[19 rs1 15]_[14 funct3 12]_[11 imm 7]_[6 opcode 0] 
+        // opcode = 0100011 , funct3 = 010  
+        instruction <= 32'bxxxxxxx_xxxxx_xxx_010_xxxxx_0100011;
+        Zero    <= 1'b0;
+        #1;
+        $display("Test 7 : sw");
+        $display("  instruction: %b , Zero: %b", instruction, Zero);
+        $display("  ResultSrc:   %b (expected: %b) - not used", ResultSrc, 2'bxx);
+        $display("  MemWrite:    %b (expected: %b) - DataMem write enabled", MemWrite, 1'b1);
+        $display("  PCSrc:       %b (expected: %b) - +4", PCSrc, 1'b0);
+        $display("  ALUSrc:      %b (expected: %b) - imm", ALUSrc, 1'b1);
+        $display("  RegWrite:    %b (expected: %b) - no reg write", RegWrite, 1'b0);
+        $display("  ImmSrc:      %b (expected: %b) - S-type", ImmSrc, 3'b001);
+        $display("  ALUControl:  %b (expected: %b) - addition\n", ALUControl, 3'b000);
+        #10;
+
         $display("=== Test Complete ===\n");
         $finish;
     end

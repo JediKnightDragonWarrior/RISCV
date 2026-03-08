@@ -1,6 +1,6 @@
 # files
 RTL = rtl/*.sv
-TB  = tb/controller_tb.sv
+TB  = tb/datapath_tb.sv
 
 # output files
 OUT = simv
