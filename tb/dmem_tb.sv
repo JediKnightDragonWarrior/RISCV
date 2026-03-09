@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-module data_mem_tb;
+module dmem_tb;
 
     logic        clk;
     logic        WE;
@@ -9,7 +9,7 @@ module data_mem_tb;
     logic [31:0] RD;
     
     // Instantiate DUT
-    data_mem dut (
+    dmem dut (
         .clk(clk),
         .WE(WE),
         .A(A),

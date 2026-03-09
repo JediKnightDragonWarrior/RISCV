@@ -6,7 +6,7 @@ module signextend
     output logic [31:0] ImmExt   // goes to srcB if ALUSrc == 1 (if instruction uses immediate in alu) 
 );
 
-    always_comb 
+    always @(*)
         case (ImmSrc)
             3'b000:     ImmExt = { {20{Instr[31]}}, Instr[31:20] };                                 // I-Type (ADDI, LW vb.)
             3'b001:     ImmExt = { {20{Instr[31]}}, Instr[31:25], Instr[11:7] };                    // S-Type (SW - Store Word)

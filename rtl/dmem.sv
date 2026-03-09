@@ -1,4 +1,4 @@
-module data_mem 
+module dmem 
 //  represents RAM
 //  sync write , asych read
 //  byte addressing used
@@ -25,6 +25,7 @@ module data_mem
     // word aligned addressing 
     logic [31:0] RAM [2**10-1:0];    
 
+
     always_ff @(posedge clk) 
         if (WE) 
             case (bit_type)
@@ -44,7 +45,7 @@ module data_mem
             endcase        
                     
 
-    always_comb  
+    always @(*)  
         case (bit_type)
             2'b00 : 
                 case (A[1:0])
