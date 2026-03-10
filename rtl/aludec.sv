@@ -34,7 +34,7 @@ always_comb
         2'b10: 
             case (funct3) // R-type or I-type ALU
                 3'b000: 
-                    if      (opb5)      ALUControl = 3'b000; // addi   -> addition
+                    if      (~opb5)      ALUControl = 3'b000; // addi   -> addition
                     else if (funct7b5)  ALUControl = 3'b001; // sub    -> subtraction
                     else                ALUControl = 3'b000; // add    -> addition
                 3'b010:                 ALUControl = 3'b101; // slt     -> signed comparison

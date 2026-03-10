@@ -66,7 +66,7 @@ module datapath_tb();
 
         // Test 1: addi x5, x0, 5 (I-Type)
         // opcode = 0010011 , funct3 = 000
-        Instr       <= 32'b000000000101_00000_000_00101_0010011;  // addi x5, x0, 5
+        Instr       <= 32'b000000001010_00000_000_00101_0010011;  // addi x5, x0, 5
         PCSrc       <= 1'b0;
         ResultSrc   <= 2'b00;
         ALUSrc      <= 1'b1;
@@ -82,10 +82,12 @@ module datapath_tb();
         $display("  Zero:       %b", Zero);
         $display("  WriteData:  %d\n", WriteData);
         #1;    
+
+
         
         // Test 2: addi x7, x0, 7 (I-Type)
         // opcode = 0010011 , funct3 = 000
-        Instr       <= 32'b000000000111_00000_000_00111_0010011;  // addi x7, x0, 7
+        Instr       <= 32'b111111111001_00101_000_00111_0010011;  // addi x7, x0, 7
         PCSrc       <= 1'b0;
         ResultSrc   <= 2'b00;
         ALUSrc      <= 1'b1;

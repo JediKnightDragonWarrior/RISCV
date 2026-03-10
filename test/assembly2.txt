@@ -1,0 +1,58 @@
+# RISC-V Test Program
+# Goal: If successful, write value 15 to address 120
+
+main:
+addi x1, x0, 8        # x1 = 8
+addi x2, x0, 4        # x2 = 4
+
+add  x3, x1, x2       # x3 = 12
+sub  x4, x1, x2       # x4 = 4
+
+and  x5, x1, x2       # x5 = 8 AND 4 = 0
+or   x6, x1, x2       # x6 = 8 OR 4 = 12
+xor  x7, x1, x2       # x7 = 8 XOR 4 = 12
+
+slt  x8, x2, x1       # x8 = (4 < 8) = 1
+
+beq  x8, x0, fail     # should NOT branch
+
+add  x9, x3, x4       # x9 = 12 + 4 = 16
+sub  x9, x9, x8       # x9 = 16 - 1 = 15
+
+sw   x9, 120(x0)      # memory[120] = 15
+
+lw   x10, 120(x0)     # x10 = 15
+
+beq  x10, x9, success # check memory result
+
+fail:
+addi x11, x0, 0       # error flag
+jal  x0, done
+
+success:
+addi x11, x0, 1       # success flag
+
+done:
+beq  x0, x0, done     # infinite loop
+
+
+Machine Code :
+
+00800093
+00400113
+002081B3
+40208233
+0020F2B3
+0020E333
+0020C3B3
+00112433
+00040C63
+004184B3
+408484B3
+06902C23
+07805503
+00950663
+00000593
+00C0006F
+00100593
+00000063

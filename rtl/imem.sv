@@ -6,7 +6,7 @@ module imem
 
 logic [31:0] RAM [0:63];
 
-initial $readmemb("test/rvtest.txt", RAM);
+initial $readmemh("test/rvtest.txt", RAM);
 
 assign rd = RAM[a[31:2]]; // word aligned
 

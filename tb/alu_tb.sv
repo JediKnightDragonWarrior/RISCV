@@ -13,19 +13,19 @@ module alu_tb;
 
     // ALU modülünü instantiate et
     alu dut (
-        .a(a),
-        .b(b),
-        .alucontrol(alucontrol),
-        .result(result),
-        .zero(zero)
+        .SrcA(a),
+        .SrcB(b),
+        .ALUControl(alucontrol),
+        .ALUResult(result),
+        .Zero(zero)
     );
 
     initial begin
         $display("ALU Testbench Başlatılıyor...");
 
-        // Test 1: ADD (10 + 5 = 15)
+        // Test 1: ADD (10 - 1 = 9)
         a = 32'd10;
-        b = 32'd5;
+        b = -32'd1;
         alucontrol = 3'b000;
         #10; // Kısa bekleme
         $display("ADD: a=%d, b=%d, result=%d, zero=%b (Beklenen: 15, 0)", a, b, result, zero);

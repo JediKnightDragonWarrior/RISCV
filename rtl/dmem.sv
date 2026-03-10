@@ -24,6 +24,8 @@ module dmem
     // 4KB RAM , 2^12 bytes
     // word aligned addressing 
     logic [31:0] RAM [2**10-1:0];    
+//    assign word = RAM[A[31:2]]; initializin RAM to 0 state
+
 
 
     always_ff @(posedge clk) 
@@ -35,7 +37,7 @@ module dmem
                         2'b01:  RAM[A[31:2]][15:8]  <= WD[7:0]; 
                         2'b10:  RAM[A[31:2]][23:16] <= WD[7:0]; 
                         2'b11:  RAM[A[31:2]][31:24] <= WD[7:0]; 
-                        default: RD <= {{24{word[7]}},word[7:0]};
+                        default: RAM[A[31:2]][7:0]   <= WD[7:0];
                     endcase
                 2'b01 : 
                     if(A[1])    RAM[A[31:2]][31:16] <= WD[15:0]; 

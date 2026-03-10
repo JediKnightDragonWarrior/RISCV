@@ -26,6 +26,7 @@ module maindec
 
   always_comb
     case(op)
+  
       // RegWrite_ImmSrc_ALUSrc_MemWrite_ResultSrc_Branch_ALUOp_Jump
       7'b0000011: controls = 12'b1_000_1_0_01_0_00_0;  // lw (I-Type) ! not same opcode with other I-Types
       7'b0100011: controls = 12'b0_001_1_1_xx_0_00_0;  // sw (S-Type)
