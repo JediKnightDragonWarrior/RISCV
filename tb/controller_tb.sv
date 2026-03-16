@@ -11,7 +11,7 @@ module controller_tb();
     logic           ALUSrc;
     logic           RegWrite;
     logic   [2:0]   ImmSrc;
-    logic   [2:0]   ALUControl;
+    logic   [3:0]   ALUControl;
 
 
     controller dut (
@@ -55,7 +55,7 @@ module controller_tb();
         $display("  ALUSrc:      %b (expected: %b) - rd2", ALUSrc, 1'b0);
         $display("  RegWrite:    %b (expected: %b) - write enabled", RegWrite, 1'b1);
         $display("  ImmSrc:      %b (expected: %b) - R-type, no imm", ImmSrc, 3'bxxx);
-        $display("  ALUControl:  %b (expected: %b) - xor\n", ALUControl, 3'b100);
+        $display("  ALUControl:  %b (expected: %b) - xor\n", ALUControl, 4'b0100);
         #10;
 
         // andi instruction test 
@@ -72,7 +72,7 @@ module controller_tb();
         $display("  ALUSrc:      %b (expected: %b) - imm", ALUSrc, 1'b1);
         $display("  RegWrite:    %b (expected: %b) - reg write enabled", RegWrite, 1'b1);
         $display("  ImmSrc:      %b (expected: %b) - I-type", ImmSrc, 3'b000);
-        $display("  ALUControl:  %b (expected: %b) - and\n", ALUControl, 3'b010);
+        $display("  ALUControl:  %b (expected: %b) - and\n", ALUControl, 4'b0010);
         #10;
 
         // jal instruction test 
@@ -89,7 +89,7 @@ module controller_tb();
         $display("  ALUSrc:      %b (expected: %b) - alu not used", ALUSrc, 1'bx);
         $display("  RegWrite:    %b (expected: %b) - link written to rd", RegWrite, 1'b1);
         $display("  ImmSrc:      %b (expected: %b) - B-type", ImmSrc, 3'b011);
-        $display("  ALUControl:  %b (expected: %b) - alu not used\n", ALUControl, 3'bxxx);
+        $display("  ALUControl:  %b (expected: %b) - alu not used\n", ALUControl, 4'bxxxx);
         #10;
 
         // lw instruction test 
@@ -106,7 +106,7 @@ module controller_tb();
         $display("  ALUSrc:      %b (expected: %b) - imm", ALUSrc, 1'b1);
         $display("  RegWrite:    %b (expected: %b) - write enabled", RegWrite, 1'b1);
         $display("  ImmSrc:      %b (expected: %b) - I-type", ImmSrc, 3'b000);
-        $display("  ALUControl:  %b (expected: %b) - addition\n", ALUControl, 3'b000);
+        $display("  ALUControl:  %b (expected: %b) - addition\n", ALUControl, 4'b0000);
         #10;
 
         // beq instruction test 
@@ -123,7 +123,7 @@ module controller_tb();
         $display("  ALUSrc:      %b (expected: %b) - rd1 == rd2", ALUSrc, 1'b0);
         $display("  RegWrite:    %b (expected: %b) - no write to reg", RegWrite, 1'b0);
         $display("  ImmSrc:      %b (expected: %b) - B-type", ImmSrc, 3'b010);
-        $display("  ALUControl:  %b (expected: %b) - rd1 - rd2 sub\n", ALUControl, 3'b001);
+        $display("  ALUControl:  %b (expected: %b) - rd1 - rd2 sub\n", ALUControl, 4'b0001);
         #10;
 
         // beq instruction test 
@@ -140,7 +140,7 @@ module controller_tb();
         $display("  ALUSrc:      %b (expected: %b) - rd1 == rd2", ALUSrc, 1'b0);
         $display("  RegWrite:    %b (expected: %b) - no write to reg", RegWrite, 1'b0);
         $display("  ImmSrc:      %b (expected: %b) - B-type", ImmSrc, 3'b010);
-        $display("  ALUControl:  %b (expected: %b) - rd1 - rd2 sub\n", ALUControl, 3'b001);
+        $display("  ALUControl:  %b (expected: %b) - rd1 - rd2 sub\n", ALUControl, 4'b0001);
         #10;
 
         // sw instruction test 
@@ -157,7 +157,7 @@ module controller_tb();
         $display("  ALUSrc:      %b (expected: %b) - imm", ALUSrc, 1'b1);
         $display("  RegWrite:    %b (expected: %b) - no reg write", RegWrite, 1'b0);
         $display("  ImmSrc:      %b (expected: %b) - S-type", ImmSrc, 3'b001);
-        $display("  ALUControl:  %b (expected: %b) - addition\n", ALUControl, 3'b000);
+        $display("  ALUControl:  %b (expected: %b) - addition\n", ALUControl, 4'b0000);
         #10;
 
         $display("=== Test Complete ===\n");

@@ -7,7 +7,7 @@ module aludec_tb();
     logic       funct7b5;
 
     // Output from the DUT
-    logic [2:0] ALUControl;
+    logic [3:0] ALUControl;
 
     // Instantiate the Unit Under Test (UUT)
     aludec dut (

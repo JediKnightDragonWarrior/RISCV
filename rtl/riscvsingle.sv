@@ -13,7 +13,7 @@ module riscvsingle
     // signals between controller and datapath
     logic         PCSrc;
     logic [1:0]   ResultSrc;
-    logic [2:0]   ALUControl;
+    logic [3:0]   ALUControl;
     logic         ALUSrc;               //  decides "srcB" (second operand of alu) [0:rd2 , 1:Immediate]             
     logic [2:0]   ImmSrc;
     logic         RegWrite;             

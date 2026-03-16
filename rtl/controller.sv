@@ -16,7 +16,7 @@ module controller
     output logic       ALUSrc,          
     output logic       RegWrite,        
     output logic [2:0] ImmSrc,          
-    output logic [2:0] ALUControl       
+    output logic [3:0] ALUControl       
 );
 
     // intermediate signals comes from maindec

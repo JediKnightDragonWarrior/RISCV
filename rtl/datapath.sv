@@ -20,7 +20,7 @@ module datapath
     input  logic        ALUSrc,        
     input  logic [2:0]  ImmSrc,        //   goes to signext , many instructions have different immediate value arrangement 
     input  logic        RegWrite,      //   enables write to register file
-    input  logic [2:0]  ALUControl,    
+    input  logic [3:0]  ALUControl,    
     output logic        Zero           
 );
 
